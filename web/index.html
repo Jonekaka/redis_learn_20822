@@ -1,0 +1,36 @@
+<!--<%&#45;&#45;-->
+  <!--Created by IntelliJ IDEA.-->
+  <!--User: Administrator-->
+  <!--Date: 2020/8/22-->
+  <!--Time: 21:44-->
+  <!--To change this template use File | Settings | File Templates.-->
+<!--&#45;&#45;%>-->
+<!--<%&#45;&#45;<%@ page contentType="text/html;charset=UTF-8" language="java" %>&#45;&#45;%>-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+      $(function () {
+          // 发送ajax请求，加载所有省份数据
+          $.get("ProvinceServlet",{},function (data) {
+              // 获得servlet
+              var province=$("#province");
+              // 遍历json数组
+              $(data).each(function () {
+                  // 创建option选项
+                  var option="<option name=' "+this.id+"'>"+this.name+"</option>";
+                      // "调用select的append追加option
+                  province.append(option);
+              });
+          });
+      });
+    </script>
+  </head>
+  <body>
+    <select id="province">
+      <option>--请选择省份--</option>
+    </select>
+  </body>
+</html>
